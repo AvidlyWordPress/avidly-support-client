@@ -8,7 +8,7 @@ Author URI: http://avidlyagency.com
 License: GPL3
 */
 
-/* Load plugin.php if not logged in */
+// Load plugin.php & update.php to run needed core admin functions if not logged in
 if ( ! function_exists( 'get_plugins' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	require_once ABSPATH . 'wp-admin/includes/update.php';
