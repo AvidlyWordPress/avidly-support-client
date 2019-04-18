@@ -4,7 +4,7 @@ Creates a REST API endpoint for monitoring core, plugin and theme updates in our
 
 ## Usage
 
-Install and enable plugin. Set an unique site key in code. **TODO:** build plugin options page.
+Install and enable plugin. Set an unique site key in code. **TODO:** build plugin options page for setting the unique key.
 
 Go to endpoint url and add the unique key to test functionality, for example: https://example.test/wp-json/avidly-support/v1/core/7immrMbgU9Qw62DcF7PizX$2LA
 
