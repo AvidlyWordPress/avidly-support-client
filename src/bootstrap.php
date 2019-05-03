@@ -35,7 +35,7 @@ function register_rest_routes() {
 
 	register_rest_route( 'avidly-support/v1', '/plugins/(?P<key>.+)', [
 		'methods'  => 'GET',
-		'callback' => 'support_get_plugins',
+		'callback' => __NAMESPACE__ . '\support_get_plugins',
 		'args'     => [
 			'key' => [
 				'validate_callback' => __NAMESPACE__ . '\rest_validation',
@@ -55,7 +55,7 @@ function register_rest_routes() {
 
 	register_rest_route( 'avidly-support/v1', '/updates/(?P<key>.+)', [
 		'methods' => 'GET',
-		'callback' => 'support_get_updates',
+		'callback' => __NAMESPACE__ . '\support_get_updates',
 		'args' => [
 			'key' => [
 				'validate_callback' => __NAMESPACE__ . '\rest_validation',
@@ -65,7 +65,7 @@ function register_rest_routes() {
 
 	register_rest_route( 'avidly-support/v1', '/core/(?P<key>.+)', [
 		'methods' => 'GET',
-		'callback' => 'support_get_core',
+		'callback' => __NAMESPACE__ . '\support_get_core',
 		'args' => [
 			'key' => [
 				'validate_callback' => __NAMESPACE__ . '\rest_validation',
