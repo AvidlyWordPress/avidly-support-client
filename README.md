@@ -17,26 +17,6 @@ should return something like this:
 	"is_multisite": false,
 	"site_count": 1,
 	"wp_install": "http://intra.test/",
-	"core_updates": [
-	{
-		"response": "upgrade",
-		"download": "https://downloads.wordpress.org/release/fi/wordpress-5.1.1.zip",
-		"locale": "fi",
-		"packages": {
-			"full": "https://downloads.wordpress.org/release/fi/wordpress-5.1.1.zip",
-			"no_content": false,
-			"new_bundled": false,
-			"partial": false,
-			"rollback": false
-		},
-		"current": "5.1.1",
-		"version": "5.1.1",
-		"php_version": "5.2.4",
-		"mysql_version": "5.0",
-		"new_bundled": "5.0",
-		"partial_version": "",
-		"dismissed": false
-	},
 }
 ```
 
