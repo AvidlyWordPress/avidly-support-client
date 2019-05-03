@@ -4,7 +4,7 @@ Creates a REST API endpoint for monitoring core, plugin and theme updates in our
 
 ## Usage
 
-Install and enable plugin. Set an unique site key in code. **TODO:** build plugin options page for setting the unique key.
+Install and enable plugin. Set an unique key in site dashboard Settings > Avidly Support
 
 Go to endpoint url and add the unique key to test functionality, for example: https://example.test/wp-json/avidly-support/v1/core/7immrMbgU9Qw62DcF7PizX$2LA
 
@@ -47,12 +47,11 @@ should return something like this:
 **Endpoint**: `/wp-json/avidly-support/v1/core/{unique_key}`
 
 **Returns**: 
-- Wordpress version
+- WordPress version
 - PHP version
 - Is it multisite?
 - Site count
-- Site url
-- Core updates
+- Site URL
 
 ### Updates
 
@@ -61,6 +60,7 @@ should return something like this:
 **Returns** 
 - Available plugin updates
 - Available theme updates
+- Available core updates
 
 ### Plugins
 
