@@ -16,7 +16,7 @@ should return something like this:
 	"php_version": "7.0.3",
 	"is_multisite": false,
 	"site_count": 1,
-	"wp_install": "http://intra.test/",
+	"wp_install": "http://example.test/",
 }
 ```
 
