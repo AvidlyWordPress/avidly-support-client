@@ -11,11 +11,9 @@ function bootstrap() {
 		return;
 	}
 
-	// Generate an unique site key if not defined
-	if ( ! get_option( AVIDLY_SUPPORT_OPTION_KEY ) === false ) {
-		add_option( AVIDLY_SUPPORT_OPTION_KEY, wp_generate_password( '25', false ) );
-	} else {
-		update_option( AVIDLY_SUPPORT_OPTION_KEY, wp_generate_password( '25', false ) );
+	// Generate an unique site key if not defined at all
+	if ( get_option( AVIDLY_SUPPORT_AUTH ) === false ) {
+		add_option( AVIDLY_SUPPORT_AUTH, wp_generate_password( '25', false ) );
 	}
 
 	$settings_page = new Settings_Page();

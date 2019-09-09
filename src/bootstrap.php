@@ -83,7 +83,7 @@ function register_rest_routes() {
  */
 function rest_validation( $param, $request, $key ) {
 
-	$site_key = is_multisite() ? get_site_option( AVIDLY_SUPPORT_OPTION_KEY ) : get_option( AVIDLY_SUPPORT_OPTION_KEY );
+	$site_key = is_multisite() ? get_site_option( AVIDLY_SUPPORT_AUTH ) : get_option( AVIDLY_SUPPORT_AUTH );
 	$safe_key = sanitize_text_field( $param );
 
 	if ( $site_key === $safe_key ) {

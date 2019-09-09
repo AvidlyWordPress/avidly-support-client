@@ -3,7 +3,7 @@
 	"type": "wordpress-plugin",
 	"license": "GPLv3",
 	"description": "Creates a REST API endpoint for monitoring the status of core and plugin updates of our client sites.",
-	"version": "0.1",
+	"version": "0.4",
 	"homepage": "https://github.com/ZeelandFamily",
 	"authors": [
 		{
