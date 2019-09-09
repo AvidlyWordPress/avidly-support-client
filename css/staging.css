@@ -1,0 +1,19 @@
+#wpadminbar {
+	background-color: #0B1198;
+}
+#wp-admin-bar-root-default:after {
+	display: inline;
+	content: 'Test env';
+	position: absolute;
+	margin-left: .5rem;
+	top: .5rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	color: #F8DEE0;
+}
+@media (min-width: 784px) {
+	#wp-admin-bar-root-default:after {
+		top: .05rem;
+	}
+}
