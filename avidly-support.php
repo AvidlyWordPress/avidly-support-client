@@ -20,6 +20,7 @@ if ( ! function_exists( 'get_plugins' ) ) {
 }
 
 define( 'AVIDLY_SUPPORT_OPTION_KEY', 'avidly-support-secret' );
+define( 'AVIDLY_SUPPORT_HELPSCOUT_BEACON', 'avidly-support-helpscout-beacon' );
 
 add_action( 'init', __NAMESPACE__ . '\\bootstrap' );
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\Admin\\bootstrap' );
