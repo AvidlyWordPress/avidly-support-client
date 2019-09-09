@@ -13,6 +13,7 @@ function bootstrap() {
 
 	if ( current_user_can( 'edit_pages' ) && 'on' === get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_helpscout_beacon' );
+		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_custom_styles' );
 	}
 }
 
@@ -187,4 +188,21 @@ function enqueue_helpscout_beacon() {
 			'beaconId' => $beacon_id,
 		]
 	);
+}
+/**
+ * Add different custom stylesheets depending on the situation.
+ */
+function enqueue_custom_styles() {
+	if ( strpos( site_url(), 'testbox.fi' ) ) {
+		wp_enqueue_style(
+			'staging-styles',
+			plugin_dir_url( __DIR__ ) . 'css/staging.css'
+		);
+	}
+	if ( strpos( site_url(), '.test/' ) ) {
+		wp_enqueue_style(
+			'local-styles',
+			plugin_dir_url( __DIR__ ) . 'css/local.css'
+		);
+	}
 }

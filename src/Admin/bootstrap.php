@@ -23,5 +23,6 @@ function bootstrap() {
 
 	if ( current_user_can( 'edit_pages' ) ) {
 		add_action( 'admin_enqueue_scripts', 'Avidly\SupportClient\enqueue_helpscout_beacon' );
+		add_action( 'admin_enqueue_scripts', 'Avidly\SupportClient\enqueue_custom_styles' );
 	}
 }
