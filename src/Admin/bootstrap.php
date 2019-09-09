@@ -21,35 +21,7 @@ function bootstrap() {
 	$settings_page = new Settings_Page();
 	$settings_page->init();
 
-	add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\enqueue_helpscout_beacon' );
-}
-
-/**
- * Embed HelpScout beacon
- */
-function enqueue_helpscout_beacon() {
-	$plugin_data    = get_plugin_data( __FILE__ );
-	$plugin_version = $plugin_data['Version'] ?: '1.0.0';
-	$beacon_id      = is_multisite() ? get_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON ) : get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON );
-
-	if ( ! $beacon_id ) {
-		return;
+	if ( current_user_can( 'edit_pages' ) ) {
+		add_action( 'admin_enqueue_scripts', 'Avidly\SupportClient\enqueue_helpscout_beacon' );
 	}
-
-	wp_enqueue_script(
-		'avidly-helpscout-beacon',
-		plugin_dir_url( __DIR__ ) . 'js/helpscout-beacon.js',
-		[],
-		$plugin_version,
-		true
-	);
-
-	$user = wp_get_current_user();
-	wp_localize_script(
-		'avidly-helpscout-beacon',
-		'avidlyHelpScout',
-		[
-			'beaconId'  => $beacon_id,
-		]
-	);
 }
