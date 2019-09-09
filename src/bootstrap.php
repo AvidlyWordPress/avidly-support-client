@@ -10,6 +10,10 @@ function bootstrap() {
 
 	add_action( 'wp', __NAMESPACE__ . '\run' );
 	add_action( 'rest_api_init', __NAMESPACE__ . '\register_rest_routes' );
+
+	if ( current_user_can( 'edit_pages' ) && 'on' === get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) ) {
+		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_helpscout_beacon' );
+	}
 }
 
 
@@ -153,4 +157,34 @@ function support_get_core() {
 		'site_count'        => is_multisite() ? get_blog_count() : 1,
 		'wp_install'        => is_multisite() ? network_site_url() : home_url( '/' ),
 	];
+}
+
+
+/**
+ * Embed HelpScout beacon
+ */
+function enqueue_helpscout_beacon() {
+	$plugin_data    = get_plugin_data( __FILE__ );
+	$plugin_version = $plugin_data['Version'] ?: '1.0.0';
+	$beacon_id      = is_multisite() ? get_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON ) : get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON );
+
+	if ( ! $beacon_id ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'avidly-helpscout-beacon',
+		plugin_dir_url( __DIR__ ) . 'js/helpscout-beacon.js',
+		[],
+		$plugin_version,
+		true
+	);
+
+	wp_localize_script(
+		'avidly-helpscout-beacon',
+		'avidlyHelpScout',
+		[
+			'beaconId' => $beacon_id,
+		]
+	);
 }
