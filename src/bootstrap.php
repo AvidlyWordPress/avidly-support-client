@@ -183,12 +183,31 @@ function enqueue_helpscout_beacon() {
 		$plugin_version,
 		true
 	);
-
+	$user_info = get_userdata( get_current_user_id() );
 	wp_localize_script(
 		'avidly-helpscout-beacon',
 		'avidlyHelpScout',
 		[
-			'beaconId' => $beacon_id,
+			'userEmail'               => $user_info->user_email,
+			'userName'                => $user_info->user_nicename,
+			'beaconId'                => $beacon_id,
+			'text'                    => __( 'Do you need help?', 'avidly-support' ),
+			'sendAMessage'            => __( 'Avidly Support', 'avidly-support' ),
+			'howCanWeHelp'            => __( 'How can we help?', 'avidly-support' ),
+			'responseTime'            => __( 'We usually respond in a few hours', 'avidly-support' ),
+			'uploadAnImage'           => __( 'Upload an image', 'avidly-support' ),
+			'attachAFile'             => __( 'Attach a file', 'avidly-support' ),
+			'continueEditing'         => __( 'Continue writing…', 'avidly-support' ),
+			'lastUpdated'             => __( 'Last updated', 'avidly-support' ),
+			'you'                     => __( 'You', 'avidly-support' ),
+			'nameLabel'               => __( 'Name', 'avidly-support' ),
+			'subjectLabel'            => __( 'Subject', 'avidly-support' ),
+			'emailLabel'              => __( 'Email address', 'avidly-support' ),
+			'messageLabel'            => __( 'How can we help?', 'avidly-support' ),
+			'messageSubmitLabel'      => __( 'Send a message', 'avidly-support' ),
+			'next'                    => __( 'Next', 'avidly-support' ),
+			'weAreOnIt'               => __( 'We’re on it!', 'avidly-support' ),
+			'messageConfirmationText' => __( 'You’ll receive an email reply within a few hours.', 'avidly-support' ),
 		]
 	);
 }

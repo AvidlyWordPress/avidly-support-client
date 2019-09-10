@@ -6,8 +6,8 @@ msgstr ""
 "Project-Id-Version: Avidly Support plugin 1.0.0\n"
 "Report-Msgid-Bugs-To: https://https://github.com/ZeelandFamily/zf-theme/"
 "issues\n"
-"POT-Creation-Date: 2019-09-10 13:23+0300\n"
-"PO-Revision-Date: 2019-09-10 13:23+0300\n"
+"POT-Creation-Date: 2019-09-10 14:10+0300\n"
+"PO-Revision-Date: 2019-09-10 14:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: Zeeland Family Websites & Services <wordpress@zeelandfamily."
 "fi>\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: src/Admin/bootstrap.php:109
+#: src/Admin/bootstrap.php:109 src/bootstrap.php:193
 msgid "Avidly Support"
 msgstr "Avidlyn tuki"
 
@@ -34,7 +34,7 @@ msgstr "Avidlyn tuki"
 msgid "This site is maintained and updated by Avidly Support team."
 msgstr "Sivuston ylläpidosta ja päivityksestä vastaa Avidlyn tukitiimi."
 
-#: src/Admin/bootstrap.php:115
+#: src/Admin/bootstrap.php:115 src/bootstrap.php:192
 msgid "Do you need help?"
 msgstr "Tarvitsetko apua?"
 
@@ -53,6 +53,62 @@ msgstr "tai"
 #: src/Admin/bootstrap.php:121
 msgid "Send email to:"
 msgstr "Lähetä sähköposti osoitteeseen:"
+
+#: src/bootstrap.php:194 src/bootstrap.php:204
+msgid "How can we help?"
+msgstr "Miten voimme olla avuksi?"
+
+#: src/bootstrap.php:195
+msgid "We usually respond in a few hours"
+msgstr "Vastaamme yleensä muutaman tunnin kuluessa"
+
+#: src/bootstrap.php:196
+msgid "Upload an image"
+msgstr "Lisää kuva"
+
+#: src/bootstrap.php:197
+msgid "Attach a file"
+msgstr "Liitä tiedosto"
+
+#: src/bootstrap.php:198
+msgid "Continue writing…"
+msgstr "Jatka kirjoittamista..."
+
+#: src/bootstrap.php:199
+msgid "Last updated"
+msgstr "Viimeksi päivitetty"
+
+#: src/bootstrap.php:200
+msgid "You"
+msgstr "Sinä"
+
+#: src/bootstrap.php:201
+msgid "Name"
+msgstr "Nimi"
+
+#: src/bootstrap.php:202
+msgid "Subject"
+msgstr "Aihe"
+
+#: src/bootstrap.php:203
+msgid "Email address"
+msgstr "Sähköpostiosoite"
+
+#: src/bootstrap.php:205
+msgid "Send a message"
+msgstr "Lähetä viesti"
+
+#: src/bootstrap.php:206
+msgid "Next"
+msgstr "Seuraava"
+
+#: src/bootstrap.php:207
+msgid "We’re on it!"
+msgstr ""
+
+#: src/bootstrap.php:208
+msgid "You’ll receive an email reply within a few hours."
+msgstr ""
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:54
 msgid "View details"
