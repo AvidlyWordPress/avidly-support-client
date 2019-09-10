@@ -7,7 +7,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://https://github.com/ZeelandFamily/zf-theme/"
 "issues\n"
 "POT-Creation-Date: 2019-09-10 14:10+0300\n"
-"PO-Revision-Date: 2019-09-10 14:11+0300\n"
+"PO-Revision-Date: 2019-09-10 15:01+0300\n"
 "Last-Translator: \n"
 "Language-Team: Zeeland Family Websites & Services <wordpress@zeelandfamily."
 "fi>\n"
@@ -104,11 +104,11 @@ msgstr "Seuraava"
 
 #: src/bootstrap.php:207
 msgid "We’re on it!"
-msgstr ""
+msgstr "Kiitos viestistäsi!"
 
 #: src/bootstrap.php:208
 msgid "You’ll receive an email reply within a few hours."
-msgstr ""
+msgstr "Vastaamme muutaman tunnin kuluessa."
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:54
 msgid "View details"
