@@ -20,7 +20,7 @@ function bootstrap() {
 	$settings_page = new Settings_Page();
 	$settings_page->init();
 
-	if ( current_user_can( 'edit_pages' ) ) {
+	if ( current_user_can( 'publish_posts' ) ) {
 		add_action( 'admin_enqueue_scripts', 'Avidly\SupportClient\enqueue_helpscout_beacon' );
 		add_action( 'admin_enqueue_scripts', 'Avidly\SupportClient\enqueue_custom_styles' );
 	}

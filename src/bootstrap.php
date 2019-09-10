@@ -12,10 +12,10 @@ function bootstrap() {
 	add_action( 'rest_api_init', __NAMESPACE__ . '\register_rest_routes' );
 	add_filter( 'auto_update_plugin', __NAMESPACE__ . '\auto_update_plugin', 10, 2 );
 
-	if ( current_user_can( 'edit_pages' ) && 'on' === get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) ) {
+	if ( current_user_can( 'publish_posts' ) && 'on' === get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_helpscout_beacon' );
 	}
-	if ( current_user_can( 'edit_pages' ) ) {
+	if ( current_user_can( 'publish_posts' ) ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_custom_styles' );
 	}
 }
