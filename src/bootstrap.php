@@ -10,6 +10,7 @@ function bootstrap() {
 
 	add_action( 'wp', __NAMESPACE__ . '\run' );
 	add_action( 'rest_api_init', __NAMESPACE__ . '\register_rest_routes' );
+	add_filter( 'auto_update_plugin', __NAMESPACE__ . '\auto_update_plugin', 10, 2 );
 
 	if ( current_user_can( 'edit_pages' ) && 'on' === get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_helpscout_beacon' );
@@ -217,10 +218,25 @@ function enqueue_custom_styles() {
 			'local-styles',
 			plugin_dir_url( __DIR__ ) . 'css/local.css'
 		);
-	} elseif ( in_array( $hostname, $staging_hosts ) ) {
+	} elseif ( in_array( $hostname, $staging_hosts, true ) ) {
 		wp_enqueue_style(
 			'staging-styles',
 			plugin_dir_url( __DIR__ ) . 'css/staging.css'
 		);
+	}
+}
+
+/**
+ * Turn auto updating on for this plugin
+ */
+function auto_update_plugin( $update, $item ) {
+	// Array of plugin slugs to always auto-update
+	$plugins = [
+		'avidly-support',
+	];
+	if ( in_array( $item->slug, $plugins, true ) ) {
+		return true;
+	} else {
+		return $update;
 	}
 }
