@@ -13,6 +13,8 @@ function bootstrap() {
 
 	if ( current_user_can( 'edit_pages' ) && 'on' === get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_helpscout_beacon' );
+	}
+	if ( current_user_can( 'edit_pages' ) ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_custom_styles' );
 	}
 }
@@ -193,16 +195,38 @@ function enqueue_helpscout_beacon() {
  * Add different custom stylesheets depending on the situation.
  */
 function enqueue_custom_styles() {
-	if ( strpos( site_url(), 'testbox.fi' ) ) {
-		wp_enqueue_style(
-			'staging-styles',
-			plugin_dir_url( __DIR__ ) . 'css/staging.css'
-		);
-	}
-	if ( strpos( site_url(), '.test/' ) ) {
+	$site_url     = site_url();
+	$parsed_url   = wp_parse_url( $site_url );
+	$exploded_url = explode( '.', $parsed_url['host'] );
+	$tld          = array_pop( $exploded_url );
+
+	// Set the local tld:s
+	$local_tlds = [
+		'test',
+		'local',
+	];
+	// Set the staging hosts to match url
+	$staging_hosts = [
+		'testbox',
+		'wptest',
+	];
+	// Check if the hostnames match to staging hosts
+	$is_staging = array_walk(
+		$exploded_url,
+		function( $url, $key, $data ) {
+			return in_array( $url, $data );
+		},
+		$staging_hosts
+	);
+	if ( in_array( $tld, $local_tlds, true ) ) {
 		wp_enqueue_style(
 			'local-styles',
 			plugin_dir_url( __DIR__ ) . 'css/local.css'
+		);
+	} elseif ( $is_staging ) {
+		wp_enqueue_style(
+			'staging-styles',
+			plugin_dir_url( __DIR__ ) . 'css/staging.css'
 		);
 	}
 }
