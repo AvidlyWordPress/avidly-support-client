@@ -20,9 +20,14 @@ window.Beacon( 'config', {
 		next: avidlyHelpScout.next,
 		weAreOnIt: avidlyHelpScout.weAreOnIt,
 		messageConfirmationText: avidlyHelpScout.messageConfirmationText,
+	},
+	messaging: {
+		contactForm: {
+			"showName": true
+		}
 	}
 });
-window.Beacon("identify", {
+window.Beacon("prefill", {
 	name: avidlyHelpScout.userName,
 	email: avidlyHelpScout.userEmail,
 });
