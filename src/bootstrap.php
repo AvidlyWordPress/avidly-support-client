@@ -199,6 +199,7 @@ function enqueue_custom_styles() {
 	$parsed_url   = wp_parse_url( $site_url );
 	$exploded_url = explode( '.', $parsed_url['host'] );
 	$tld          = array_pop( $exploded_url );
+	$hostname     = array_pop( $exploded_url );
 
 	// Set the local tld:s
 	$local_tlds = [
@@ -210,20 +211,13 @@ function enqueue_custom_styles() {
 		'testbox',
 		'wptest',
 	];
-	// Check if the hostnames match to staging hosts
-	$is_staging = array_walk(
-		$exploded_url,
-		function( $url, $key, $data ) {
-			return in_array( $url, $data );
-		},
-		$staging_hosts
-	);
+
 	if ( in_array( $tld, $local_tlds, true ) ) {
 		wp_enqueue_style(
 			'local-styles',
 			plugin_dir_url( __DIR__ ) . 'css/local.css'
 		);
-	} elseif ( $is_staging ) {
+	} elseif ( in_array( $hostname, $staging_hosts ) ) {
 		wp_enqueue_style(
 			'staging-styles',
 			plugin_dir_url( __DIR__ ) . 'css/staging.css'
