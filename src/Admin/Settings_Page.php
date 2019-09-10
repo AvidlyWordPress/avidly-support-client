@@ -40,12 +40,6 @@ class Settings_Page {
 			[ $this, 'set_options' ]
 		);
 
-		register_setting(
-			'avidly-support-option-group',
-			'avidly-support',
-			[ $this, 'set_options' ]
-		);
-
 		add_settings_section(
 			'avidly-support-auth',
 			'Support site authentication',
@@ -54,9 +48,9 @@ class Settings_Page {
 		);
 
 		add_settings_field(
-			'key',
+			'avidly-support-auth',
 			'Unique site key',
-			[ $this, 'display_key_form_field' ],
+			[ $this, 'display_auth_form_field' ],
 			'avidly-support-settings',
 			'avidly-support-auth'
 		);
@@ -69,7 +63,7 @@ class Settings_Page {
 		);
 
 		add_settings_field(
-			'helpscout-beacon',
+			'avidly-support-helpscout-beacon',
 			'HelpScout Beacon ID',
 			[ $this, 'display_helpscout_beacon_form_field' ],
 			'avidly-support-settings',
@@ -77,7 +71,7 @@ class Settings_Page {
 		);
 
 		add_settings_field(
-			'helpscout-beacon-show-front',
+			'avidly-support-helpscout-beacon-front',
 			'Show HelpScout beacon in front end?',
 			[ $this, 'display_helpscout_beacon_front_form_field' ],
 			'avidly-support-settings',
@@ -88,10 +82,9 @@ class Settings_Page {
 	/**
 	 * Display the secret form field.
 	 */
-	public function display_key_form_field() {
-
-		$key = get_option( AVIDLY_SUPPORT_OPTION_KEY );
-		echo '<input type="text" name="avidly-support[key]" value="' . esc_html( $key ) . '">';
+	public function display_auth_form_field() {
+		$key = get_option( AVIDLY_SUPPORT_AUTH );
+		echo '<input type="text" name="avidly-support[auth]" required value="' . esc_html( $key ) . '">';
 	}
 
 	/**
@@ -101,30 +94,28 @@ class Settings_Page {
 	 * @return string Authentication value.
 	 */
 	public function set_options( $new_settings_values ) {
-
-		error_log( print_r( $new_settings_values, true ) );
-		$shared_key_value = $new_settings_values['key'];
-		if ( get_option( AVIDLY_SUPPORT_OPTION_KEY ) === false ) {
-			add_option( AVIDLY_SUPPORT_OPTION_KEY, $shared_key_value );
+		$auth_key_value = isset( $new_settings_values['auth'] ) ? $new_settings_values['auth'] : '';
+		if ( get_option( AVIDLY_SUPPORT_AUTH ) === false ) {
+			add_option( AVIDLY_SUPPORT_AUTH, $auth_key_value );
 		} else {
-			update_option( AVIDLY_SUPPORT_OPTION_KEY, $shared_key_value );
+			update_option( AVIDLY_SUPPORT_AUTH, $auth_key_value );
 		}
 
-		$helpscout_beacon_value = $new_settings_values['helpscout'];
+		$helpscout_beacon_value = isset( $new_settings_values['helpscout'] ) ? $new_settings_values['helpscout'] : '';
 		if ( get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON ) === false ) {
 			add_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON, $helpscout_beacon_value );
 		} else {
 			update_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON, $helpscout_beacon_value );
 		}
 
-		$helpscout_beacon_front_value = isset( $new_settings_values['helpscout-front'] )? $new_settings_values['helpscout-front'] : 'off';
+		$helpscout_beacon_front_value = isset( $new_settings_values['helpscout-front'] ) ? $new_settings_values['helpscout-front'] : 'off';
 		if ( get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) === false ) {
 			add_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT, $helpscout_beacon_front_value );
 		} else {
 			update_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT, $helpscout_beacon_front_value );
 		}
 
-		return $shared_key_value;
+		return $auth_key_value;
 	}
 
 	/**
@@ -156,7 +147,7 @@ class Settings_Page {
 		echo '<p class="description">Leave empty to hide beacon</p>';
 	}
 
-		/**
+	/**
 	 * Display the HelpScout beacon key form field.
 	 */
 	public function display_helpscout_beacon_front_form_field() {
