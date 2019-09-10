@@ -83,7 +83,6 @@ class Settings_Page {
 	 * Display the secret form field.
 	 */
 	public function display_auth_form_field() {
-
 		$key = get_option( AVIDLY_SUPPORT_AUTH );
 		echo '<input type="text" name="avidly-support[auth]" required value="' . esc_html( $key ) . '">';
 	}
@@ -95,8 +94,6 @@ class Settings_Page {
 	 * @return string Authentication value.
 	 */
 	public function set_options( $new_settings_values ) {
-
-		error_log( print_r( $new_settings_values, true ) );
 		$auth_key_value = isset( $new_settings_values['auth'] ) ? $new_settings_values['auth'] : '';
 		if ( get_option( AVIDLY_SUPPORT_AUTH ) === false ) {
 			add_option( AVIDLY_SUPPORT_AUTH, $auth_key_value );
@@ -150,7 +147,7 @@ class Settings_Page {
 		echo '<p class="description">Leave empty to hide beacon</p>';
 	}
 
-		/**
+	/**
 	 * Display the HelpScout beacon key form field.
 	 */
 	public function display_helpscout_beacon_front_form_field() {
