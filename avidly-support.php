@@ -2,7 +2,7 @@
 Plugin Name: Avidly Support plugin
 Plugin URI: http://avidlyagency.com
 Description: Creates a REST API endpoint for monitoring the status of core and plugin updates of our client sites and adds helpful features for the devs and users, like a HelpScout Beacon
-Version: 0.8
+Version: 0.9
 Author: Niku Hietanen / Avidly
 Author URI: http://avidlyagency.com
 License: GPL3
