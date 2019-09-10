@@ -240,3 +240,10 @@ function auto_update_plugin( $update, $item ) {
 		return $update;
 	}
 }
+
+/**
+ * Load plugin textdomain.
+ */
+function load_textdomain() {
+	load_plugin_textdomain( 'avidly-support', false, 'avidly-support/languages' );
+}
