@@ -27,7 +27,7 @@ window.Beacon( 'config', {
 		}
 	}
 });
-window.Beacon("prefill", {
+window.Beacon("identify", {
 	name: avidlyHelpScout.userName,
 	email: avidlyHelpScout.userEmail,
 });
