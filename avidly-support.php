@@ -7,7 +7,7 @@ Author: Niku Hietanen / Avidly
 Author URI: http://avidlyagency.com
 License: GPL3
 */
-namespace Avidly\SupportClient;
+namespace Avidly\Support_Client;
 
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/src/bootstrap.php';
@@ -22,8 +22,10 @@ if ( ! function_exists( 'get_plugins' ) ) {
 define( 'AVIDLY_SUPPORT_AUTH', 'avidly-support-auth' );
 define( 'AVIDLY_SUPPORT_HELPSCOUT_BEACON', 'avidly-support-helpscout-beacon' );
 define( 'AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT', 'avidly-support-helpscout-beacon-front' );
-define( 'UPDATE_SERVER', 'https://support-plugin.testbox.fi' );
+define( 'UPDATE_SERVER', 'https://update.foo' );
 define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'BEACON_ID', '1234' );
+define( 'BEACON_SECRET', '1234' );
 
 add_action( 'init', __NAMESPACE__ . '\\bootstrap' );
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\Admin\\bootstrap' );
@@ -32,5 +34,5 @@ add_action( 'init', __NAMESPACE__ . '\\load_textdomain' );
 $check_updates = \Puc_v4_Factory::buildUpdateChecker(
 	UPDATE_SERVER . '/plugin.json',
 	__FILE__,
-	'avidly-support'
+	'avidly-support-client'
 );

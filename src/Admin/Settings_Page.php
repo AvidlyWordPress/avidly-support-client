@@ -1,5 +1,5 @@
 <?php
-namespace Avidly\SupportClient\Admin;
+namespace Avidly\Support_Client\Admin;
 
 class Settings_Page {
 
@@ -18,7 +18,7 @@ class Settings_Page {
 	public function add_settings_page() {
 
 		// dashicons-carrot
-		add_options_page( 'Settings Admin', 'Avidly Support', 'manage_options', 'avidly-support', [ $this, 'create_settings_page' ] );
+		add_options_page( 'Settings Admin', 'Avidly Support', 'manage_options', 'avidly-support-client', [ $this, 'create_settings_page' ] );
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Settings_Page {
 
 		register_setting(
 			'avidly-support-option-group',
-			'avidly-support',
+			'avidly-support-client',
 			[ $this, 'set_options' ]
 		);
 
@@ -83,7 +83,7 @@ class Settings_Page {
 	 * Display the secret form field.
 	 */
 	public function display_auth_form_field() {
-		$key = get_option( AVIDLY_SUPPORT_AUTH );
+		$key = get_site_option( AVIDLY_SUPPORT_AUTH );
 		echo '<input type="text" name="avidly-support[auth]" required value="' . esc_html( $key ) . '">';
 	}
 
@@ -95,24 +95,24 @@ class Settings_Page {
 	 */
 	public function set_options( $new_settings_values ) {
 		$auth_key_value = isset( $new_settings_values['auth'] ) ? $new_settings_values['auth'] : '';
-		if ( get_option( AVIDLY_SUPPORT_AUTH ) === false ) {
-			add_option( AVIDLY_SUPPORT_AUTH, $auth_key_value );
+		if ( get_site_option( AVIDLY_SUPPORT_AUTH ) === false ) {
+			add_site_option( AVIDLY_SUPPORT_AUTH, $auth_key_value );
 		} else {
-			update_option( AVIDLY_SUPPORT_AUTH, $auth_key_value );
+			update_site_option( AVIDLY_SUPPORT_AUTH, $auth_key_value );
 		}
 
 		$helpscout_beacon_value = isset( $new_settings_values['helpscout'] ) ? $new_settings_values['helpscout'] : '';
-		if ( get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON ) === false ) {
-			add_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON, $helpscout_beacon_value );
+		if ( get_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON ) === false ) {
+			add_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON, $helpscout_beacon_value );
 		} else {
-			update_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON, $helpscout_beacon_value );
+			update_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON, $helpscout_beacon_value );
 		}
 
 		$helpscout_beacon_front_value = isset( $new_settings_values['helpscout-front'] ) ? $new_settings_values['helpscout-front'] : 'off';
-		if ( get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) === false ) {
-			add_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT, $helpscout_beacon_front_value );
+		if ( get_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT ) === false ) {
+			add_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT, $helpscout_beacon_front_value );
 		} else {
-			update_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT, $helpscout_beacon_front_value );
+			update_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT, $helpscout_beacon_front_value );
 		}
 
 		return $auth_key_value;
@@ -142,7 +142,7 @@ class Settings_Page {
 	 * Display the HelpScout beacon key form field.
 	 */
 	public function display_helpscout_beacon_form_field() {
-		$id = get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON );
+		$id = get_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON );
 		echo '<input type="text" length="30" name="avidly-support[helpscout]" value="' . esc_html( $id ) . '">';
 		echo '<p class="description">Leave empty to hide beacon</p>';
 	}
@@ -151,7 +151,7 @@ class Settings_Page {
 	 * Display the HelpScout beacon key form field.
 	 */
 	public function display_helpscout_beacon_front_form_field() {
-		$id = get_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT );
+		$id = get_site_option( AVIDLY_SUPPORT_HELPSCOUT_BEACON_FRONT );
 		$checked = 'on' === $id ? 'checked="checked"' : '';
 		echo '<input type="checkbox" length="30" name="avidly-support[helpscout-front]"' . esc_attr( $checked ) . '>';
 	}
