@@ -1,8 +1,6 @@
 <?php
 namespace Avidly\Support_Client\Admin;
 
-use Avidly\Support_Client;
-
 /**
  * Bootstrap the plugin, adding required actions and filters
  *
